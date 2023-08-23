@@ -1,3 +1,4 @@
+'use client';
 import PostGrid from '../posts/PostGrid';
 import classes from './FeaturedPosts.module.css';
 
