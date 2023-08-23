@@ -8,7 +8,7 @@ const NavigationBar = () => {
             <Link href="/"><Logo /></Link>
             <ul>
                 <li><Link href='/posts'>Posts</Link></li>
-                <li><Link href='/contect'>Contect</Link></li>
+                <li><Link href='/contact'>Contect</Link></li>
             </ul>
         </header>
     );
