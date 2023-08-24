@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { MongoClient } from "mongodb";
 
+
+const url = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.aoiyfhc.mongodb.net/?retryWrites=true&w=majority`;
 export const POST = async(request) => {
     const req = await request.json();
  
@@ -11,7 +13,7 @@ export const POST = async(request) => {
     };
 
     try{
-        const client = await MongoClient.connect('mongodb+srv://yhs:9swsqjh0MO8RuiyN@cluster0.aoiyfhc.mongodb.net/?retryWrites=true&w=majority')
+        const client = await MongoClient.connect(url)
         const db = client.db('blog');
         const result = await db.collection('messages').insertOne(data);
         data.id = result.insertedId;
