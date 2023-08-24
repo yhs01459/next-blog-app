@@ -4,6 +4,10 @@ import Hero from "@/components/home-page/Hero";
 import { getFeaturedPost } from "@/lib/posts-util";
 
 
+export const metadata = {
+  title: 'home',
+  description: 'home page',
+}
 
 const HomePage = () => {
   const featuredPosts = getFeaturedPost();

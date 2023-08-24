@@ -1,15 +1,22 @@
 'use client';
 import classes from "./ContactForm.module.css"
-import { useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
+import { NotificationContext } from "@/store/notification-context";
 
 const ContactForm = () => {
+
     const getEmail = useRef();
     const getName = useRef();
     const getMessage = useRef();
+    const context = useContext(NotificationContext);
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-    
+        context.action.showNotification({
+            title:"전송중",
+            message:"데이터 전송 중",
+            status:'pending',
+        });
         fetch('/api/contact', {
             method: 'POST',
             body: JSON.stringify({
@@ -25,6 +32,11 @@ const ContactForm = () => {
         .then((response)=>response.json())
         .then((data)=>{
             console.log(data);
+            context.action.showNotification({
+                title:"전송완료",
+                message:"데이터 전송 완료",
+                status:'success',
+            });
         })
     }
 
